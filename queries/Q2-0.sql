@@ -1,4 +1,4 @@
--- Top 10 Department sellers
+-- Top 10 Department producers
 
 WITH product_source AS (
     SELECT 
@@ -13,6 +13,9 @@ WITH product_source AS (
         ON p.department_id = d.department_id
 )
 
-SELECT *
+SELECT 
+    department,
+    COUNT(product_id) AS products
 FROM product_source
-LIMIT 20;
+GROUP BY department
+ORDER BY 2 DESC;
