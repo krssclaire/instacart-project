@@ -1,4 +1,4 @@
--- Department (worst to best performer in sellings)
+-- Departments (worst to best sellers)
 WITH dept_products AS (
     SELECT department_id,
            COUNT(*) AS total_products
