@@ -39,7 +39,7 @@ WITH q2_users AS (
 SELECT
     department, 
     churned_user_count,
-    ROUND((churned_user_count * 100 / SUM(churned_user_count) OVER()), 2) percent_on_total
+    ROUND((churned_user_count * 100 / SUM(churned_user_count) OVER()), 2) percent_on_total_users
 FROM churned_dept    
 GROUP BY 1, 2
 ORDER BY churned_user_count DESC;

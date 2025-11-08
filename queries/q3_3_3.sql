@@ -20,6 +20,6 @@ WITH q2_trending_hrs AS (
 
 SELECT *
 FROM q2_trending_hrs q2
-FULL JOIN q3_trending_hrs q3
+JOIN q3_trending_hrs q3
     ON q2.order_hour_of_day = q3.order_hour_of_day
 ORDER BY 1;
