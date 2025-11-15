@@ -1,30 +1,33 @@
--- Most sold products in Q2 / Q3 (top 10)
+-- Most sold products (top 10) in Q2 and Q3 by absolute frequency
 
 WITH most_sold_products_prior AS (
     SELECT
         'Q2' AS dataset,
-        products.product_id,
         products.product_name,
-        COUNT(prior_order.order_id) AS total_orders
+        COUNT(prior_order.product_id) AS total_orders
     FROM order_products_prior AS prior_order
     INNER JOIN products 
         ON products.product_id = prior_order.product_id 
     GROUP BY products.product_id
-    ORDER BY 4 DESC
+    ORDER BY 3 DESC
+    LIMIT 10
 ), most_sold_products_train AS (
     SELECT
         'Q3' AS dataset,
-        products.product_id,
         products.product_name,
-        COUNT(train_order.order_id) AS total_orders
+        COUNT(train_order.product_id) AS total_orders
     FROM order_products_train AS train_order
     INNER JOIN products 
         ON products.product_id = train_order.product_id 
     GROUP BY products.product_id
-    ORDER BY 4 DESC
+    ORDER BY 3 DESC
+    LIMIT 10
 )
 
 SELECT *
---edit most_sold_products to view prior/train sellings
-FROM most_sold_products_prior
-LIMIT 10;
+FROM most_sold_products_prior 
+
+UNION ALL 
+
+SELECT *
+FROM most_sold_products_train;

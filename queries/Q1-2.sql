@@ -23,5 +23,5 @@ FROM products p
 LEFT JOIN prior ON p.product_id = prior.product_id
 LEFT JOIN train ON p.product_id = train.product_id
 -- Edit ASC or DESC to see products with the most increase / decrese of demand
-ORDER BY order_diff ASC
+ORDER BY order_diff DESC
 LIMIT 15;

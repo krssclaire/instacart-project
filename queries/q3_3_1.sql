@@ -15,7 +15,7 @@ FROM q2_users
 WHERE user_id NOT IN(SELECT user_id FROM q3_users);
 
 /*
--- comment previous SELECT query and uncomment this one to show if in Q3 there are new users
+-- comment previous SELECT query and uncomment this one to verify if in Q3 there are new users
 SELECT COUNT(*) AS new_users
 FROM q3_users
 WHERE user_id NOT IN(SELECT user_id FROM q2_users);

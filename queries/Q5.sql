@@ -8,8 +8,7 @@ WITH user_orders AS (
     FROM orders
     WHERE eval_set IN ('prior', 'train')
     GROUP BY user_id, eval_set
-),
-buckets AS (
+), buckets AS (
     SELECT
         user_id,
         eval_set,
@@ -22,6 +21,7 @@ buckets AS (
         END AS order_bucket
     FROM user_orders
 )
+
 SELECT
     eval_set AS quarter,
     order_bucket,
